@@ -62,6 +62,21 @@ public class DirectionsApi {
       GeoApiContext context, String origin, String destination) {
     return new DirectionsApiRequest(context).origin(origin).destination(destination);
   }
+  
+  /**
+   * Creates a new DirectionsApiRequest between the given origin and destination, using the defaults
+   * for all other options.
+   *
+   * @param context Context that the DirectionsApiRequest will be executed against
+   * @param origin Origin address as text
+   * @param destination Destination address as text
+   * @param mode Travel Mode as TravelMode enum
+   * @return A newly constructed DirectionsApiRequest between the given points.
+   */
+  public static DirectionsApiRequest getDirections(
+      GeoApiContext context, String origin, String destination, TravelMode mode) {
+    return new DirectionsApiRequest(context).origin(origin).destination(destination).mode(mode);
+  }
 
   static class Response implements ApiResponse<DirectionsResult> {
     public String status;
